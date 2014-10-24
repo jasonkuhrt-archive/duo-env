@@ -1,0 +1,21 @@
+{
+  "name": "duo-env",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script/register",
+    "test-debug": "DEBUG=duo-env mocha --compilers coffee:coffee-script/register"
+  },
+  "author": "Jason Kuhrt <jasonkuhrt@me.com> (http://jasonkuhrt.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "debug": "^2.1.0"
+  },
+  "devDependencies": {
+    "bluebird": "^2.3.6",
+    "chai": "^1.9.2",
+    "duo": "^0.8.5",
+    "mocha": "^2.0.1"
+  }
+}
