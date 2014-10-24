@@ -1,14 +1,14 @@
 {
   "name": "duo-env",
   "version": "0.0.2",
-  "description": "",
+  "description": "Expose Node.js global process.env to compiled client-side code",
   "main": "index.js",
   "scripts": {
     "test": "mocha --compilers coffee:coffee-script/register",
     "test-debug": "DEBUG=duo-env mocha --compilers coffee:coffee-script/register"
   },
   "author": "Jason Kuhrt <jasonkuhrt@me.com> (http://jasonkuhrt.com/)",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "debug": "^2.1.0"
   },
@@ -18,5 +18,25 @@
     "coffee-script": "^1.8.0",
     "duo": "^0.8.5",
     "mocha": "^2.0.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasonkuhrt/duo-env.git"
+  },
+  "keywords": [
+    "env",
+    "process",
+    "client",
+    "duo",
+    "compile",
+    "plugin",
+    "config"
+  ],
+  "bugs": {
+    "url": "https://github.com/jasonkuhrt/duo-env/issues"
+  },
+  "homepage": "https://github.com/jasonkuhrt/duo-env"
 }
