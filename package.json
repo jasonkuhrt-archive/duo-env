@@ -4,6 +4,7 @@
   "description": "Expose Node.js global process.env to compiled client-side code",
   "main": "index.js",
   "scripts": {
+    "start": "mocha --compilers coffee:coffee-script/register --watch",
     "test": "mocha --compilers coffee:coffee-script/register --bail",
     "test-debug": "DEBUG=duo-env mocha --compilers coffee:coffee-script/register"
   },

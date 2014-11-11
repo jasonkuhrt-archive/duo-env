@@ -14,7 +14,7 @@ GLOBAL.example = (filename, duoEnvConfig)->
   (new Promise (resolve, reject)->
     root = path.join __dirname, 'examples'
     Duo root
-    .entry path.join(root, "#{filename}.js")
+    .entry filename
     .use env duoEnvConfig
     .cache false
     .run (err, js)->

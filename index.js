@@ -8,13 +8,13 @@ module.exports = function duoPlugin(config) {
   if (config.pick) config.pick = asArray(config.pick)
   config.name = config.name || 'env'
 
-  var env = config.pick ? pickKeys(config.pick, process.env) : process.env
+  var processEnv = config.pick ? pickKeys(config.pick, process.env) : process.env
   var first = true
 
-  return function duoEnv(file, duo) {
+  return function env(file, duo) {
     if (first) {
-      debug('Exposing env vars: %j', env)
-      duo.include(config.name, compileHashModule(env))
+      debug('Exposing env vars: %j', processEnv)
+      duo.include(config.name, compileHashModule(processEnv), 'js')
       first = false
     }
   }
