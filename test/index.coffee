@@ -1,11 +1,17 @@
-exec = require('child_process').exec
+cp = Promise.promisifyAll require('child_process')
 
-beforeEach (done)-> exec 'rm -r test/examples/components', -> done()
-afterEach (done)-> exec 'rm -r test/examples/components', -> done()
+
+
+clean = ->
+  cp.execAsync "rm -r #{__dirname}/examples/components"
+  .catch ->
+
 
 
 
 describe 'duo-env', ->
+  beforeEach clean
+  afterEach clean
   process.env.foo = 'bar'
   process.env.zed = 'ned'
 
@@ -17,6 +23,7 @@ describe 'duo-env', ->
 
 
   describe 'option "pick"', ->
+
     it 'permits only listed envs to be exposed', ->
       example 'simple', pick: ['foo', 'zed']
       .then (logs)->
@@ -30,6 +37,7 @@ describe 'duo-env', ->
 
 
   describe 'option "name"', ->
+
     it 'exposes envs as given module "name"', ->
       example 'custom-name', name: 'foo-env'
       .then (logs)->

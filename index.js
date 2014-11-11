@@ -2,11 +2,12 @@ var debug = require('debug')('duo-env')
 
 
 
-module.exports = function plugin(config) {
+module.exports = function duoPlugin(config) {
 
   config = config || {}
-  if (config.pick) config.pick = inArray(config.pick)
+  if (config.pick) config.pick = asArray(config.pick)
   config.name = config.name || 'env'
+
   var env = config.pick ? pickKeys(config.pick, process.env) : process.env
   var first = true
 
@@ -23,7 +24,7 @@ module.exports = function plugin(config) {
 
 // Helpers
 
-function inArray(x){
+function asArray(x){
   return Array.isArray(x) ? x : [x]
 }
 
@@ -33,7 +34,7 @@ function compileHashModule(hash) {
 
 function pickKeys(keys, oldHash) {
   return keys.reduce(function(newHash, key){
-      if (oldHash.hasOwnProperty(key)) newHash[key] = oldHash[key]
-      return newHash
+    if (oldHash.hasOwnProperty(key)) newHash[key] = oldHash[key]
+    return newHash
   }, {})
 }
